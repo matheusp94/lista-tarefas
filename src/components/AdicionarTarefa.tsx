@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View, Input, IconButton } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
+import { IconButton, Input, View } from 'native-base';
+import React, { useState } from "react";
 import { useEstadoGlobal } from "../hooks/EstadoGlobal";
 
 const AdicionarTarefa: React.FC = () => {
-    // Utiliza o hook useEstadoGlobal para acessar as funções do contexto global de estado
+    // Utilizando o hook useEstadoGlobal para acessar as funções do contexto global de estado
     const { adicionarTarefa } = useEstadoGlobal();
-    // Define um estado local para armazenar o valor da nova tarefa
+    // Definindo um estado local para armazenar o valor da nova tarefa
     const [novaTarefa, setNovaTarefa] = useState("");
 
     // Função chamada ao clicar no botão de adicionar tarefa
