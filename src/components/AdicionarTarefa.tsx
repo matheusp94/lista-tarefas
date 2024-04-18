@@ -11,7 +11,7 @@ const AdicionarTarefa: React.FC = () => {
 
     // Função chamada ao clicar no botão de adicionar tarefa
     const handleAdicionarTarefa = () => {
-        // Verifica se o campo de nova tarefa não está vazio
+        // Verificando se o campo de nova tarefa não está vazio
         if (novaTarefa.trim() !== "") {
             // Chama a função adicionarTarefa do contexto global de estado para adicionar a nova tarefa
             adicionarTarefa(novaTarefa);
