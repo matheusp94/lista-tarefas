@@ -52,7 +52,7 @@ const TarefaItem: React.FC<TarefaItemProps> = ({ id, titulo }) => {
                 style={{ borderRadius: 50, backgroundColor: '#E56F00', marginLeft: 4 }} // Estilizando o botão editar
             />
             <IconButton
-                icon={<Ionicons name="trash" size={14} color="#F3FFF9" />}
+                icon={<Ionicons name="trash" size={14} color="#F3FFF8" />}
                 colorScheme="light"
                 onPress={() => excluirTarefa(id)} // Chamando a função excluirTarefa com o id da tarefa ao clicar no botão
                 style={{ borderRadius: 50, backgroundColor: 'red', marginLeft: 4 }} // Estilizando o botão excluir

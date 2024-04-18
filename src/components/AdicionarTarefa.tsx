@@ -36,10 +36,10 @@ const AdicionarTarefa: React.FC = () => {
                 </View>
                 {/* Botão de adicionar tarefa */}
                 <IconButton
-                    icon={<Ionicons name="add" size={24} color="#F3FFF9" />}
+                    icon={<Ionicons name="add" size={24} color="#F3FFF7" />}
                     colorScheme="light"
                     onPress={handleAdicionarTarefa}
-                    style={{ borderRadius: 50, backgroundColor: '#E56F00' }}
+                    style={{ borderRadius: 50, backgroundColor: '#2ECCFA' }}
                 />
             </View>
         </View>
