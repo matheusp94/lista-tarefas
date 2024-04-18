@@ -28,34 +28,34 @@ const TarefaItem: React.FC<TarefaItemProps> = ({ id, titulo }) => {
 
     return (
         <Box
-            flexDirection="row" // Ajustando o layout para linha
-            justifyContent="space-between" // Alinhando os itens à direita
-            alignItems="center" // Alinhando os itens verticalmente
-            bg="gray.200" // Definindo a cor de fundo como cinza
-            p={4} // Adicionando um padding interno de 4
-            my={2} // Adicionando uma margem vertical de 2
-            mx={2} // Adicionando uma margem horizontal de 2
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            bg="gray.200"
+            p={4}
+            my={2}
+            mx={2}
         >
-            {editando ? ( // Verificando se está no modo de edição
+            {editando ? (
                 <Input
-                    flex={3} // Ajustando o tamanho do input
-                    value={novoTitulo} // Definindo o valor do input como o novo título
-                    onChangeText={setNovoTitulo} // Atualizando o estado novoTitulo ao digitar
+                    flex={3}
+                    value={novoTitulo}
+                    onChangeText={setNovoTitulo}
                 />
             ) : (
-                <Text flex={3}>{titulo}</Text> // Exibindo o título da tarefa à esquerda
+                <Text flex={3}>{titulo}</Text>
             )}
             <IconButton
-                icon={<Ionicons name={editando ? "checkmark" : "pencil"} size={14} color="#F3FFF9" />} // Ícone muda dependendo do modo de edição
+                icon={<Ionicons name={editando ? "checkmark" : "pencil"} size={14} color="#F3FFF9" />}
                 colorScheme="light"
-                onPress={handleEditar} // Chamando a função handleEditar ao clicar no botão
-                style={{ borderRadius: 50, backgroundColor: '#E56F00', marginLeft: 4 }} // Estilizando o botão editar
+                onPress={handleEditar}
+                style={{ borderRadius: 50, backgroundColor: '#E56F00', marginLeft: 4 }}
             />
             <IconButton
                 icon={<Ionicons name="trash" size={14} color="#F3FFF9" />}
                 colorScheme="light"
-                onPress={() => excluirTarefa(id)} // Chamando a função excluirTarefa com o id da tarefa ao clicar no botão
-                style={{ borderRadius: 50, backgroundColor: 'red', marginLeft: 4 }} // Estilizando o botão excluir
+                onPress={() => excluirTarefa(id)}
+                style={{ borderRadius: 50, backgroundColor: 'red', marginLeft: 4 }}
             />
         </Box>
     );
@@ -63,14 +63,14 @@ const TarefaItem: React.FC<TarefaItemProps> = ({ id, titulo }) => {
 
 // Componente ListaTarefas que exibe a lista de tarefas utilizando um componente FlatList
 const ListaTarefas: React.FC = () => {
-    const { tarefas } = useEstadoGlobal(); // Obtendo a lista de tarefas do contexto global
+    const { tarefas } = useEstadoGlobal();
 
     return (
         <FlatList
-            data={tarefas} // Definindo os dados da lista como a lista de tarefas obtida do contexto global
-            renderItem={({ item }) => <TarefaItem id={item.id} titulo={item.titulo} />} // Renderizando cada item da lista utilizando o componente TarefaItem
-            keyExtractor={(item) => item.id.toString()} // Extraindo chaves únicas para cada item da lista
-            contentContainerStyle={{ flexGrow: 1 }} // Definindo o estilo para que a lista ocupe todo o espaço disponível
+            data={tarefas}
+            renderItem={({ item }) => <TarefaItem id={item.id} titulo={item.titulo} />}
+            keyExtractor={(item) => item.id.toString()}
+            contentContainerStyle={{ flexGrow: 1 }}
         />
     );
 };

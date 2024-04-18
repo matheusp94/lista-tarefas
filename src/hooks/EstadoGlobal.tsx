@@ -8,15 +8,15 @@ interface Tarefa {
 interface ContextoEstadoGlobal {
     tarefas: Tarefa[];
     adicionarTarefa: (titulo: string) => void;
-    editarTarefa: (id: number, novoTitulo: string) => void; // Novo método de edição
-    excluirTarefa: (id: number) => void; // Novo método de exclusão
+    editarTarefa: (id: number, novoTitulo: string) => void;
+    excluirTarefa: (id: number) => void; 
 }
 
 const ContextoEstadoGlobal = createContext<ContextoEstadoGlobal>({
     tarefas: [],
     adicionarTarefa: () => { },
-    editarTarefa: () => { }, // Inicialmente vazio
-    excluirTarefa: () => { }, // Inicialmente vazio
+    editarTarefa: () => { }, 
+    excluirTarefa: () => { }, 
 });
 
 export const useEstadoGlobal = () => useContext(ContextoEstadoGlobal);
