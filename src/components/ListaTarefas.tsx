@@ -1,6 +1,6 @@
-import React from "react";
-import { FlatList, Text, Box, IconButton, Input } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
+import { Box, FlatList, IconButton, Input, Text } from 'native-base';
+import React from "react";
 import { useEstadoGlobal } from "../hooks/EstadoGlobal";
 
 // Definindo as propriedades que o componente TarefaItem irá receber
@@ -28,7 +28,7 @@ const TarefaItem: React.FC<TarefaItemProps> = ({ id, titulo }) => {
 
     return (
         <Box
-            flexDirection="row" // Ajustando o layout para linha
+            flexDirection="row" // Ajuste do layout para linha
             justifyContent="space-between" // Alinhando os itens à direita
             alignItems="center" // Alinhando os itens verticalmente
             bg="gray.200" // Definindo a cor de fundo como cinza
