@@ -1,18 +1,23 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { Button, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
 
-// Aqui, nós estamos definindo o tipo para a propriedade navigation
 type Props = {
-    navigation: NativeStackNavigationProp<any, any>; // Lembram da nossa aula sobre tipos de propriedades? Estamos usando um tipo de propriedade genérica aqui.
+    navigation: NativeStackNavigationProp<any, any>;
 };
 
 const LoginScreen: React.FC<Props> = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const handleLogin = async () => {
+        if (!username || !password) {
+            setErrorMessage('Por favor, preencha todos os campos.');
+            return;
+        }
+
         try {
             const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',
@@ -23,32 +28,94 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
             });
 
             if (!response.ok) {
-                throw new Error('Erro ao fazer login');
+                setErrorMessage('Erro ao fazer login. Verifique suas credenciais.');
+                return;
             }
 
             const data = await response.json();
             const token = data.token;
 
-            // Armazene o token JWT localmente
             await AsyncStorage.setItem('token', token);
 
-            // Navega para a tela Home após o login bem-sucedido
+            setErrorMessage(null);
             navigation.navigate('Home');
         } catch (error) {
-            console.error('Erro ao fazer login:', error);
+            setErrorMessage('Erro de conexão. Tente novamente mais tarde.');
         }
     };
 
-
     return (
-        <View>
-            <Text>Username:</Text>
-            <TextInput value={username} onChangeText={setUsername} />
-            <Text>Password:</Text>
-            <TextInput value={password} onChangeText={setPassword} secureTextEntry={true} />
-            <Button title="Login" onPress={handleLogin} />
-        </View>
+        <ImageBackground
+            source={require('../../assets/images/fundo.png')}
+            style={styles.background}
+        >
+            <View style={styles.container}>
+                <Text style={styles.title}>TDSPY APP</Text>
+                {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Username"
+                    value={username}
+                    onChangeText={setUsername}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={true}
+                />
+                <View style={styles.buttonContainer}>
+                    <Button title="Login" onPress={handleLogin} />
+                </View>
+            </View>
+        </ImageBackground>
     );
 };
+
+const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+    },
+    container: {
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        padding: 20,
+        borderRadius: 10,
+        width: '90%',
+        maxWidth: 400,
+        alignItems: 'center',
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#333',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    error: {
+        color: 'red',
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+    input: {
+        width: '100%',
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        borderRadius: 5,
+        marginBottom: 15,
+        backgroundColor: '#fff',
+    },
+    buttonContainer: {
+        marginTop: 10,
+        width: '100%',
+        borderRadius: 5,
+    },
+});
 
 export default LoginScreen;
