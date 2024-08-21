@@ -46,7 +46,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
     return (
         <ImageBackground
-            source={require('../../assets/images/fundo.png')}
+            source={require('../../assets/images/bg.png')}
             style={styles.background}
         >
             <View style={styles.container}>
@@ -76,19 +76,19 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        resizeMode: 'cover',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        height: '100%',
+        resizeMode: 'cover', // Cobre toda a tela
+        justifyContent: 'center', // Centraliza o conteúdo verticalmente
+        alignItems: 'center', // Centraliza o conteúdo horizontalmente
+        width: '100%', // Largura total da tela
+        height: '100%', // Altura total da tela
     },
     container: {
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Fundo branco semitransparente
         padding: 20,
         borderRadius: 10,
-        width: '90%',
-        maxWidth: 400,
-        alignItems: 'center',
+        width: '90%', // Proporção da largura da tela
+        maxWidth: 400, // Limita o tamanho máximo da largura
+        alignItems: 'center', // Centraliza os inputs no container
     },
     title: {
         fontSize: 30,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     input: {
-        width: '100%',
+        width: '100%', // Faz o input ocupar toda a largura disponível
         borderWidth: 1,
         borderColor: '#ccc',
         padding: 10,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         marginTop: 10,
-        width: '100%',
+        width: '100%', // Botão ocupa toda a largura disponível
         borderRadius: 5,
     },
 });
