@@ -40,7 +40,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       setErrorMessage(null);
       navigation.navigate('Home');
     } catch (error) {
-      setErrorMessage('Erro de conexão. Tente novamente mais tarde.');
+      setErrorMessage('Falha na conexão. Por favor, tente novamente em alguns instantes..');
     }
   };
 
