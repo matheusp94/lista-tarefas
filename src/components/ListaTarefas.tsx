@@ -28,7 +28,6 @@ const TarefaItem: React.FC<TarefaItemProps> = ({ id, titulo }) => {
 
     return (
         <Box
-<<<<<<< HEAD
             flexDirection="row"
             justifyContent="space-between"
             alignItems="center"
@@ -36,7 +35,6 @@ const TarefaItem: React.FC<TarefaItemProps> = ({ id, titulo }) => {
             p={4}
             my={2}
             mx={2}
-=======
             flexDirection="row" // Ajuste do layout para linha
             justifyContent="space-between" // Alinhando os itens à direita
             alignItems="center" // Alinhando os itens verticalmente
@@ -44,7 +42,6 @@ const TarefaItem: React.FC<TarefaItemProps> = ({ id, titulo }) => {
             p={4} // Adicionando um padding interno de 4
             my={2} // Adicionando uma margem vertical de 2
             mx={2} // Adicionando uma margem horizontal de 2
->>>>>>> 3f3918ad67acbf6dfb347a338d33a725f90357b0
         >
             {editando ? (
                 <Input
